@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "V11.0.0"
+  - lts/*
 install:
   npm install
 script:
