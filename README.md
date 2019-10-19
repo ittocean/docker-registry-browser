@@ -1,4 +1,4 @@
-# Docker Registry Browser
+# Docker Registry Browser [![Build Status](https://travis-ci.org/ittocean/docker-registry-browser.svg?branch=master)](https://travis-ci.org/ittocean/docker-registry-browser)
 
 ## Project setup
 ```
