@@ -2,6 +2,6 @@ services:
   - docker
   
 script:
-  - echo "$DOCKER_PASSWORD" | docker login docker.pkg.github.com -u ittocean --password-stdin
+  - docker login docker.pkg.github.com -u ittocean -p TOKEN 5ed5510ecce2d6ae3869f9958a8e19fe0fceb8cc
   - docker build -t docker.pkg.github.com/ittocean/docker-registry-browser/docker-registry-browser:$TRAVIS_BUILD_NUMBER .
   - docker push docker.pkg.github.com/ittocean/docker-registry-browser/docker-registry-browser:$TRAVIS_BUILD_NUMBER
