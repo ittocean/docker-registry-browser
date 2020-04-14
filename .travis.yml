@@ -1,7 +1,14 @@
 language: node_js
+
+services:
+  - docker
+
 node_js:
   - lts/*
+
 install:
-  npm install
+  - npm install
+
 script:
-  npm run build
+  - npm run build
+  - docker build -t ittocean/docker-registry-browser:$TRAVIS_BUILD_NUMBER .
