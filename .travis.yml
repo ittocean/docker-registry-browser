@@ -2,6 +2,6 @@ services:
   - docker
   
 script:
-  - docker login docker.pkg.github.com -u ittocean -p 95ddc9f181fb6389bc16ba57dfd44d587f9710b0
+  - docker login docker.pkg.github.com -u ittocean -p $DOCKER_PASSWORD
   - docker build -t docker.pkg.github.com/ittocean/docker-registry-browser/docker-registry-browser:$TRAVIS_BUILD_NUMBER .
   - docker push docker.pkg.github.com/ittocean/docker-registry-browser/docker-registry-browser:$TRAVIS_BUILD_NUMBER
