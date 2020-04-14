@@ -1,7 +1,7 @@
 FROM node:12.9.0-alpine
 COPY ./ /app
 WORKDIR /app
-RUN npm install --production && npm run build
+RUN npm install && npm run build
 
 FROM nginx
 RUN mkdir /app
