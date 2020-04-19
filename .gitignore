@@ -5,8 +5,10 @@ package-lock.json
 yarn.lock
 
 # local env files
+.env
 src/.env
 .env.*.local
+docker-compose.yml
 
 # Log files
 npm-debug.log*
