@@ -1,8 +1,7 @@
-language: node_js
-node_js:
-  - "V11.0.0"
-  - lts/*
-install:
-  npm install
+services:
+  - docker
+
 script:
-  npm run build
+#  - docker login docker.pkg.github.com -u $DOCKER_USER -p $DOCKER_PASSWORD
+  - docker build -t docker.pkg.github.com/ittocean/docker-registry-browser/docker-registry-browser:$TRAVIS_BUILD_NUMBER .
+#  - docker push docker.pkg.github.com/ittocean/docker-registry-browser/docker-registry-browser:$TRAVIS_BUILD_NUMBER
