@@ -8,6 +8,4 @@ Vue.config.productionTip = false;
 Vue.use(ElementUI);
 Vue.use(AsyncComputed);
 
-new Vue({
-  render: h => h(App),
-}).$mount('#app');
+new Vue({render: h => h(App),}).$mount('#app');

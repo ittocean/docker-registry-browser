@@ -8,9 +8,10 @@
             </el-row>
             <el-row>
                 <div class="command-content">
-                    <span>docker pull {{}}/</span>
-                    <span v-if="selected">{{selected.base}}/</span>
-                    <span>{{currentTag || 'TAG'}}</span>
+                    <span id="pull-command">
+                        {{getPullCommand()}}
+                    </span>
+                    <span id="pull-copy-btn" class="el-icon-document-copy" @click="copyPullCommand"/>
                 </div>
             </el-row>
             <el-row>
@@ -63,13 +64,18 @@
             getRowClass() {
                 return 'choosable';
             },
-            getImageHeader() {
-                return this.selected ? `${this.selected.base.split('/')[0]}/${this.selected.base.split('/')[1]}` : '';
+            getPullCommand() {
+                return `docker pull ${this.address}/${this.selected ? this.selected.base : ''}:${this.currentTag || 'TAG'}`;
             },
-            getPullCmd() {
-                return this.selected ? `${this.selected.base.split('/')[0]}/${(this.selected.base).split('/')[1]}` : '';
+            copyPullCommand() {
+                const range = document.createRange();
+                range.selectNode(document.getElementById('pull-command'));
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
+                document.execCommand('copy');
+                window.getSelection().removeAllRanges();
             }
-        },
+        }
     }
 </script>
 
@@ -84,7 +90,7 @@
         height: 80vh;
     }
 
-    >>>.choosable {
+    >>> .choosable {
         cursor: pointer;
     }
 
@@ -95,5 +101,16 @@
         background: #d3dce6;
         border-radius: 4px;
         min-height: 28px;
+    }
+
+    #pull-copy-btn {
+        font-size: 20pt;
+        float: right;
+        margin: -3px 6px 0 0;
+        cursor: pointer;
+    }
+
+    #pull-copy-btn:hover {
+        color: #409EFF;
     }
 </style>
